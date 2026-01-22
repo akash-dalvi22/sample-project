@@ -1,1 +1,3 @@
 Hello From DevOps
+We are learning the Git
+Our current topic is branching strategy
