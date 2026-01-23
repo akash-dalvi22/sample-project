@@ -1,4 +1,5 @@
 Hello From DevOps
+
 We are learning the Git
 Our current topic is branching strategy
 
@@ -9,3 +10,4 @@ This code is written by the developer 1
 This is the final version
 we are going to live this.
 
+This changes form the server.
