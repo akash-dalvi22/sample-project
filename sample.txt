@@ -1,3 +1,6 @@
 Hello From DevOps
 We are learning the Git
 Our current topic is branching strategy
+
+This code is written by developer 2
+This is the final conditions
