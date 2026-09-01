@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NextPath DevOps | Industry-Level DevOps Training</title>
+    <title>404 Error | NextPath DevOps</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Google Font -->
@@ -114,136 +114,137 @@
             }
         }
 
-        header {
-            background: linear-gradient(135deg, #2563eb, #1e40af);
-            padding: 60px 20px;
+        .error-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
             text-align: center;
-            margin-top: 0;
         }
 
-        header h1 {
-            font-size: 3rem;
+        .error-content {
+            background: linear-gradient(135deg, #020617, #1e293b);
+            padding: 60px 40px;
+            border-radius: 20px;
+            border: 2px solid rgba(96, 165, 250, 0.2);
+            max-width: 600px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .error-icon {
+            font-size: 5rem;
+            color: #ef4444;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        .error-code {
+            font-size: 4rem;
             font-weight: 700;
-        }
-
-        header p {
-            margin-top: 15px;
-            font-size: 1.2rem;
-            color: #e0e7ff;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-
-            header p {
-                font-size: 1rem;
-            }
-        }
-
-        section {
-            padding: 60px 10%;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-title h2 {
-            font-size: 2.3rem;
             color: #60a5fa;
+            margin-bottom: 15px;
         }
 
-        .section-title p {
-            margin-top: 10px;
+        .error-title {
+            font-size: 2.2rem;
+            color: #e0e7ff;
+            margin-bottom: 15px;
+        }
+
+        .error-message {
+            font-size: 1.1rem;
             color: #cbd5f5;
+            margin-bottom: 30px;
+            line-height: 1.8;
         }
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: #020617;
-            padding: 30px;
+        .error-suggestions {
+            background: rgba(37, 99, 235, 0.1);
+            padding: 25px;
             border-radius: 12px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 30px;
             border-left: 4px solid #2563eb;
         }
 
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(59,130,246,0.4);
-            border-left-color: #60a5fa;
-        }
-
-        .card h3 {
-            margin-bottom: 15px;
+        .error-suggestions h3 {
             color: #93c5fd;
+            margin-bottom: 12px;
         }
 
-        .card p {
-            font-size: 0.95rem;
-            color: #dbeafe;
+        .error-suggestions ul {
+            list-style: none;
+            text-align: left;
         }
 
-        .tech-stack {
+        .error-suggestions li {
+            padding: 8px 0;
+            color: #cbd5f5;
+        }
+
+        .error-suggestions li:before {
+            content: "→ ";
+            color: #60a5fa;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .error-buttons {
             display: flex;
-            flex-wrap: wrap;
             gap: 15px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .tech {
-            background: #1e293b;
-            padding: 12px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            color: #93c5fd;
-            transition: all 0.3s;
-        }
-
-        .tech:hover {
-            background: #2563eb;
-            color: #e0e7ff;
-            transform: scale(1.05);
-        }
-
-        .cta {
-            background: linear-gradient(135deg, #1d4ed8, #2563eb);
-            text-align: center;
-            padding: 70px 20px;
-        }
-
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .cta p {
-            font-size: 1.1rem;
-            margin-bottom: 30px;
-            color: #e0e7ff;
-        }
-
-        .cta a {
+        .btn {
             text-decoration: none;
-            background: #020617;
-            color: #93c5fd;
-            padding: 15px 35px;
-            border-radius: 30px;
+            padding: 12px 30px;
+            border-radius: 8px;
             font-weight: 600;
-            transition: background 0.3s, color 0.3s;
+            transition: all 0.3s;
             display: inline-block;
         }
 
-        .cta a:hover {
-            background: #e0e7ff;
-            color: #1e3a8a;
+        .btn-primary {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: #e0e7ff;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #1e40af, #1e3a8a);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(96, 165, 250, 0.1);
+            color: #93c5fd;
+            border: 2px solid #2563eb;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(96, 165, 250, 0.2);
+            border-color: #60a5fa;
         }
 
         footer {
@@ -253,26 +254,45 @@
             font-size: 0.85rem;
             color: #94a3b8;
             border-top: 1px solid rgba(96, 165, 250, 0.2);
+            position: fixed;
+            bottom: 0;
+            width: 100%;
         }
 
         @media (max-width: 768px) {
-            section {
-                padding: 40px 5%;
+            .error-content {
+                padding: 40px 25px;
             }
 
-            .section-title h2 {
+            .error-icon {
+                font-size: 3.5rem;
+            }
+
+            .error-code {
+                font-size: 3rem;
+            }
+
+            .error-title {
                 font-size: 1.8rem;
             }
 
-            .cta {
-                padding: 50px 15px;
+            .error-message {
+                font-size: 0.95rem;
             }
 
-            .cta h2 {
-                font-size: 1.8rem;
+            .error-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .error-container {
+                min-height: auto;
+                padding-bottom: 150px;
             }
         }
-    </style>
     </style>
 </head>
 <body>
@@ -281,7 +301,7 @@
     <nav>
         <a href="index.html" class="logo"><i class="fas fa-cloud"></i> NextPath DevOps</a>
         <ul class="nav-links" id="navLinks">
-            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="services.html">Services</a></li>
             <li><a href="courses.html">Courses</a></li>
             <li><a href="about.html">About</a></li>
@@ -294,64 +314,38 @@
         </div>
     </nav>
 
-    <!-- HERO SECTION -->
-    <header>
-        <h1>NextPath DevOps</h1>
-        <p>Industry-Level DevOps Training for Freshers & Working Professionals 🚀</p>
-    </header>
+    <!-- ERROR CONTAINER -->
+    <div class="error-container">
+        <div class="error-content">
+            <div class="error-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="error-code">404</div>
+            <h1 class="error-title">Page Not Found</h1>
+            <p class="error-message">
+                We're sorry! The page you're looking for doesn't exist. It might have been moved or deleted.
+            </p>
 
-    <!-- ABOUT SECTION -->
-    <section>
-        <div class="section-title">
-            <h2>Why NextPath DevOps?</h2>
-            <p>We don’t teach tools — we build real DevOps engineers</p>
-        </div>
-
-        <div class="cards">
-            <div class="card">
-                <h3>Industry-Oriented Training</h3>
-                <p>Learn DevOps exactly how it is used in real companies with production-level workflows and best practices.</p>
+            <div class="error-suggestions">
+                <h3><i class="fas fa-lightbulb"></i> What You Can Do:</h3>
+                <ul>
+                    <li>Go back to the homepage</li>
+                    <li>Check the URL for typos</li>
+                    <li>Browse our services and courses</li>
+                    <li>Contact us for help</li>
+                </ul>
             </div>
 
-            <div class="card">
-                <h3>For Freshers & Professionals</h3>
-                <p>Perfect for beginners starting their DevOps journey and professionals switching roles or upgrading skills.</p>
+            <div class="error-buttons">
+                <a href="index.html" class="btn btn-primary">
+                    <i class="fas fa-home"></i> Go to Home
+                </a>
+                <a href="inquiry.html" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Contact Us
+                </a>
             </div>
-
-            <div class="card">
-                <h3>Hands-On Learning</h3>
-                <p>Live labs, real projects, CI/CD pipelines, cloud deployments, and troubleshooting sessions.</p>
-            </div>
         </div>
-    </section>
-
-    <!-- TECH STACK -->
-    <section>
-        <div class="section-title">
-            <h2>DevOps Tools You Will Master</h2>
-            <p>Modern tools used by top tech companies</p>
-        </div>
-
-        <div class="tech-stack">
-            <div class="tech">Linux</div>
-            <div class="tech">Git & GitHub</div>
-            <div class="tech">Docker</div>
-            <div class="tech">Kubernetes</div>
-            <div class="tech">AWS Cloud</div>
-            <div class="tech">Jenkins</div>
-            <div class="tech">Terraform</div>
-            <div class="tech">Ansible</div>
-            <div class="tech">CI/CD Pipelines</div>
-            <div class="tech">Monitoring & Logging</div>
-        </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta">
-        <h2>Ready to Start Your DevOps Journey?</h2>
-        <p>Join NextPath DevOps and transform your career with real-world DevOps skills.</p>
-        <a href="#">Enroll Now</a>
-    </section>
+    </div>
 
     <!-- FOOTER -->
     <footer>
