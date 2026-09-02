@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Courses | NextPath DevOps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR STYLES */
+        nav {
+            background: linear-gradient(135deg, #1e1e30, #2d3561);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav .nav-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        nav .nav-links a.active {
+            color: #60a5fa;
+            border-bottom: 2px solid #60a5fa;
+            padding-bottom: 5px;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #60a5fa;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            nav .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #1e1e30, #2d3561);
+                flex-direction: column;
+                gap: 0;
+                display: none;
+                padding: 20px 0;
+            }
+
+            nav .nav-links.active {
+                display: flex;
+            }
+
+            nav .nav-links a {
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                padding: 15px 4%;
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #e0e7ff;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+        }
+
+        section {
+            padding: 60px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            color: #60a5fa;
+        }
+
+        .section-title p {
+            margin-top: 10px;
+            color: #cbd5f5;
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: linear-gradient(135deg, #020617, #1e293b);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 2px solid rgba(96, 165, 250, 0.2);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            border-color: #2563eb;
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .course-header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .course-header h3 {
+            font-size: 1.5rem;
+            color: #e0e7ff;
+            margin-bottom: 10px;
+        }
+
+        .course-level {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #93c5fd;
+        }
+
+        .course-body {
+            padding: 30px;
+        }
+
+        .course-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+
+        .course-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #cbd5f5;
+        }
+
+        .course-info i {
+            color: #60a5fa;
+        }
+
+        .course-description {
+            color: #cbd5f5;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .course-topics {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .course-topics li {
+            padding: 8px 0;
+            color: #cbd5f5;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.1);
+        }
+
+        .course-topics li:before {
+            content: "• ";
+            color: #60a5fa;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .course-price {
+            font-size: 1.8rem;
+            color: #60a5fa;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .course-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: #e0e7ff;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+        .course-btn:hover {
+            background: linear-gradient(135deg, #1e40af, #1e3a8a);
+            transform: scale(1.02);
+        }
+
+        .cta {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #e0e7ff;
+        }
+
+        .cta a {
+            text-decoration: none;
+            background: #020617;
+            color: #93c5fd;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .cta a:hover {
+            background: #e0e7ff;
+            color: #1e3a8a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #020617;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 40px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta {
+                padding: 50px 15px;
+            }
+
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+
+            .course-card {
+                border-radius: 10px;
+            }
+
+            .course-body {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <a href="index.html" class="logo"><i class="fas fa-cloud"></i> NextPath DevOps</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="courses.html" class="active">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="inquiry.html">Contact Us</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Our Courses</h1>
+        <p>Structured Learning Paths from Beginner to Advanced 📚</p>
+    </header>
+
+    <!-- COURSES SECTION -->
+    <section>
+        <div class="section-title">
+            <h2>Choose Your Learning Path</h2>
+            <p>Comprehensive courses designed for every level</p>
+        </div>
+
+        <div class="courses-grid">
+            <div class="course-card">
+                <div class="course-header">
+                    <h3>DevOps Fundamentals</h3>
+                    <span class="course-level">Beginner</span>
+                </div>
+                <div class="course-body">
+                    <div class="course-info">
+                        <span><i class="fas fa-calendar"></i> 4 Weeks</span>
+                        <span><i class="fas fa-clock"></i> 40 Hours</span>
+                    </div>
+                    <p class="course-description">Start your DevOps journey with core concepts and essential tools.</p>
+                    <ul class="course-topics">
+                        <li>Linux Basics</li>
+                        <li>Git & GitHub</li>
+                        <li>Docker Fundamentals</li>
+                        <li>Introduction to CI/CD</li>
+                    </ul>
+                    <div class="course-price">$199</div>
+                    <button class="course-btn">Enroll Now</button>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-header">
+                    <h3>Docker & Kubernetes</h3>
+                    <span class="course-level">Intermediate</span>
+                </div>
+                <div class="course-body">
+                    <div class="course-info">
+                        <span><i class="fas fa-calendar"></i> 6 Weeks</span>
+                        <span><i class="fas fa-clock"></i> 60 Hours</span>
+                    </div>
+                    <p class="course-description">Master containerization and orchestration with hands-on projects.</p>
+                    <ul class="course-topics">
+                        <li>Docker Advanced</li>
+                        <li>Docker Compose</li>
+                        <li>Kubernetes Architecture</li>
+                        <li>Helm & Package Management</li>
+                    </ul>
+                    <div class="course-price">$349</div>
+                    <button class="course-btn">Enroll Now</button>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-header">
+                    <h3>AWS for DevOps</h3>
+                    <span class="course-level">Intermediate</span>
+                </div>
+                <div class="course-body">
+                    <div class="course-info">
+                        <span><i class="fas fa-calendar"></i> 6 Weeks</span>
+                        <span><i class="fas fa-clock"></i> 65 Hours</span>
+                    </div>
+                    <p class="course-description">Become proficient in AWS cloud infrastructure and services.</p>
+                    <ul class="course-topics">
+                        <li>EC2 & VPC</li>
+                        <li>RDS & S3</li>
+                        <li>Lambda & Serverless</li>
+                        <li>CloudFormation & IaC</li>
+                    </ul>
+                    <div class="course-price">$379</div>
+                    <button class="course-btn">Enroll Now</button>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-header">
+                    <h3>CI/CD Pipelines</h3>
+                    <span class="course-level">Intermediate</span>
+                </div>
+                <div class="course-body">
+                    <div class="course-info">
+                        <span><i class="fas fa-calendar"></i> 5 Weeks</span>
+                        <span><i class="fas fa-clock"></i> 50 Hours</span>
+                    </div>
+                    <p class="course-description">Design and implement automated deployment pipelines.</p>
+                    <ul class="course-topics">
+                        <li>Jenkins Setup & Config</li>
+                        <li>GitHub Actions</li>
+                        <li>Automated Testing</li>
+                        <li>Blue-Green Deployment</li>
+                    </ul>
+                    <div class="course-price">$319</div>
+                    <button class="course-btn">Enroll Now</button>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-header">
+                    <h3>Infrastructure as Code</h3>
+                    <span class="course-level">Advanced</span>
+                </div>
+                <div class="course-body">
+                    <div class="course-info">
+                        <span><i class="fas fa-calendar"></i> 5 Weeks</span>
+                        <span><i class="fas fa-clock"></i> 55 Hours</span>
+                    </div>
+                    <p class="course-description">Master Terraform and Ansible for infrastructure automation.</p>
+                    <ul class="course-topics">
+                        <li>Terraform Fundamentals</li>
+                        <li>Modules & State Management</li>
+                        <li>Ansible Playbooks</li>
+                        <li>Configuration Management</li>
+                    </ul>
+                    <div class="course-price">$359</div>
+                    <button class="course-btn">Enroll Now</button>
+                </div>
+            </div>
+
+            <div class="course-card">
+                <div class="course-header">
+                    <h3>Complete DevOps Bootcamp</h3>
+                    <span class="course-level">Advanced</span>
+                </div>
+                <div class="course-body">
+                    <div class="course-info">
+                        <span><i class="fas fa-calendar"></i> 12 Weeks</span>
+                        <span><i class="fas fa-clock"></i> 150 Hours</span>
+                    </div>
+                    <p class="course-description">Complete DevOps mastery with all tools and real-world projects.</p>
+                    <ul class="course-topics">
+                        <li>All Topics Covered</li>
+                        <li>Capstone Project</li>
+                        <li>1-on-1 Mentoring</li>
+                        <li>Job Assistance</li>
+                    </ul>
+                    <div class="course-price">$899</div>
+                    <button class="course-btn">Enroll Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Questions About Our Courses?</h2>
+        <p>Our team is ready to help you choose the perfect course for your goals.</p>
+        <a href="inquiry.html">Get in Touch</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 NextPath DevOps | Empowering Careers in Cloud & DevOps ☁️
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Set active link based on current page
+        function setActiveLink() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        setActiveLink();
+    </script>
+
+</body>
+</html>

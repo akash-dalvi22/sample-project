@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Services | NextPath DevOps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR STYLES */
+        nav {
+            background: linear-gradient(135deg, #1e1e30, #2d3561);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav .nav-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        nav .nav-links a.active {
+            color: #60a5fa;
+            border-bottom: 2px solid #60a5fa;
+            padding-bottom: 5px;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #60a5fa;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            nav .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #1e1e30, #2d3561);
+                flex-direction: column;
+                gap: 0;
+                display: none;
+                padding: 20px 0;
+            }
+
+            nav .nav-links.active {
+                display: flex;
+            }
+
+            nav .nav-links a {
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                padding: 15px 4%;
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #e0e7ff;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+        }
+
+        section {
+            padding: 60px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            color: #60a5fa;
+        }
+
+        .section-title p {
+            margin-top: 10px;
+            color: #cbd5f5;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: linear-gradient(135deg, #020617, #1e293b);
+            padding: 40px;
+            border-radius: 15px;
+            transition: all 0.3s;
+            border: 2px solid rgba(96, 165, 250, 0.2);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: #2563eb;
+            box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            color: #60a5fa;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #93c5fd;
+        }
+
+        .service-card p {
+            color: #cbd5f5;
+            margin-bottom: 20px;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: #cbd5f5;
+            border-bottom: 1px solid rgba(96, 165, 250, 0.1);
+        }
+
+        .service-features li:before {
+            content: "✓ ";
+            color: #60a5fa;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+
+        .cta {
+            background: linear-gradient(135deg, #1d4ed8, #2563eb);
+            text-align: center;
+            padding: 70px 20px;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #e0e7ff;
+        }
+
+        .cta a {
+            text-decoration: none;
+            background: #020617;
+            color: #93c5fd;
+            padding: 15px 35px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .cta a:hover {
+            background: #e0e7ff;
+            color: #1e3a8a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #020617;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 40px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .cta {
+                padding: 50px 15px;
+            }
+
+            .cta h2 {
+                font-size: 1.8rem;
+            }
+
+            .service-card {
+                padding: 25px;
+            }
+
+            .service-icon {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <a href="index.html" class="logo"><i class="fas fa-cloud"></i> NextPath DevOps</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="inquiry.html">Contact Us</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Our Services</h1>
+        <p>Comprehensive DevOps Solutions for Your Business 🎯</p>
+    </header>
+
+    <!-- SERVICES SECTION -->
+    <section>
+        <div class="section-title">
+            <h2>What We Offer</h2>
+            <p>Industry-leading services to accelerate your DevOps journey</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3>Bootcamp Training</h3>
+                <p>Intensive hands-on training programs covering all aspects of modern DevOps practices.</p>
+                <ul class="service-features">
+                    <li>Live Instructor Sessions</li>
+                    <li>Hands-on Labs</li>
+                    <li>Real-world Projects</li>
+                    <li>Certificate on Completion</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Consulting & Mentorship</h3>
+                <p>One-on-one guidance from DevOps experts with years of industry experience.</p>
+                <ul class="service-features">
+                    <li>Career Guidance</li>
+                    <li>Resume Review</li>
+                    <li>Interview Preparation</li>
+                    <li>Technical Mentoring</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-code-branch"></i>
+                </div>
+                <h3>CI/CD Pipeline Setup</h3>
+                <p>Design and implementation of complete CI/CD pipelines for your applications.</p>
+                <ul class="service-features">
+                    <li>GitHub Actions Setup</li>
+                    <li>Jenkins Configuration</li>
+                    <li>Automated Testing</li>
+                    <li>Deployment Automation</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-docker"></i>
+                </div>
+                <h3>Containerization & Orchestration</h3>
+                <p>Docker and Kubernetes implementation for scalable application deployment.</p>
+                <ul class="service-features">
+                    <li>Docker Image Building</li>
+                    <li>Kubernetes Cluster Setup</li>
+                    <li>Container Security</li>
+                    <li>Helm Chart Creation</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                </div>
+                <h3>Cloud Infrastructure</h3>
+                <p>AWS, Azure, and GCP infrastructure design and management.</p>
+                <ul class="service-features">
+                    <li>Infrastructure as Code (IaC)</li>
+                    <li>Terraform Management</li>
+                    <li>Cost Optimization</li>
+                    <li>Security Hardening</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Monitoring & Logging</h3>
+                <p>Complete observability solutions for your infrastructure and applications.</p>
+                <ul class="service-features">
+                    <li>Prometheus Setup</li>
+                    <li>ELK Stack Implementation</li>
+                    <li>Alert Management</li>
+                    <li>Performance Optimization</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta">
+        <h2>Ready to Transform Your DevOps?</h2>
+        <p>Get in touch with our team and let's build something amazing together.</p>
+        <a href="inquiry.html">Contact Us Today</a>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 NextPath DevOps | Empowering Careers in Cloud & DevOps ☁️
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Set active link based on current page
+        function setActiveLink() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        setActiveLink();
+    </script>
+
+</body>
+</html>
