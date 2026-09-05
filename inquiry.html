@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us | NextPath DevOps</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #0f172a;
+            color: #e5e7eb;
+            line-height: 1.6;
+        }
+
+        /* NAVBAR STYLES */
+        nav {
+            background: linear-gradient(135deg, #1e1e30, #2d3561);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav .nav-links a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        nav .nav-links a.active {
+            color: #60a5fa;
+            border-bottom: 2px solid #60a5fa;
+            padding-bottom: 5px;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #60a5fa;
+            margin: 5px 0;
+            transition: 0.3s;
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            nav .nav-links {
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #1e1e30, #2d3561);
+                flex-direction: column;
+                gap: 0;
+                display: none;
+                padding: 20px 0;
+            }
+
+            nav .nav-links.active {
+                display: flex;
+            }
+
+            nav .nav-links a {
+                padding: 15px 20px;
+                border-bottom: 1px solid rgba(96, 165, 250, 0.2);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav {
+                padding: 15px 4%;
+            }
+        }
+
+        header {
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+        }
+
+        header p {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #e0e7ff;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+        }
+
+        section {
+            padding: 60px 10%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.3rem;
+            color: #60a5fa;
+        }
+
+        .section-title p {
+            margin-top: 10px;
+            color: #cbd5f5;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #020617, #1e293b);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #2563eb;
+            transition: all 0.3s;
+        }
+
+        .info-card:hover {
+            border-left-color: #60a5fa;
+            transform: translateX(10px);
+        }
+
+        .info-icon {
+            font-size: 1.8rem;
+            color: #60a5fa;
+            margin-bottom: 12px;
+        }
+
+        .info-card h3 {
+            color: #93c5fd;
+            margin-bottom: 8px;
+        }
+
+        .info-card p {
+            color: #cbd5f5;
+        }
+
+        .contact-info a {
+            color: #60a5fa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: #93c5fd;
+        }
+
+        .form-container {
+            background: linear-gradient(135deg, #020617, #1e293b);
+            padding: 40px;
+            border-radius: 15px;
+            border: 2px solid rgba(96, 165, 250, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #93c5fd;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            background: #0f1729;
+            border: 2px solid rgba(96, 165, 250, 0.2);
+            border-radius: 8px;
+            color: #e5e7eb;
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #64748b;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 10px rgba(37, 99, 235, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: #e0e7ff;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #1e40af, #1e3a8a);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .form-success {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid #22c55e;
+            padding: 15px;
+            border-radius: 8px;
+            color: #86efac;
+            text-align: center;
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        .form-success.show {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #020617;
+            font-size: 0.85rem;
+            color: #94a3b8;
+            border-top: 1px solid rgba(96, 165, 250, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            section {
+                padding: 40px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .form-container {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION BAR -->
+    <nav>
+        <a href="index.html" class="logo"><i class="fas fa-cloud"></i> NextPath DevOps</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="courses.html">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="inquiry.html" class="active">Contact Us</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header>
+        <h1>Contact Us</h1>
+        <p>Get in Touch with Our Team 📧</p>
+    </header>
+
+    <!-- CONTACT SECTION -->
+    <section>
+        <div class="section-title">
+            <h2>We'd Love to Hear From You</h2>
+            <p>Have questions? Send us a message and we'll respond shortly</p>
+        </div>
+
+        <div class="contact-container">
+            <!-- CONTACT INFO -->
+            <div class="contact-info">
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Address</h3>
+                    <p>123 Tech Boulevard<br>San Francisco, CA 94105<br>United States</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <h3>Phone</h3>
+                    <p>+1 (415) 555-0123<br>Mon - Fri, 9:00 AM - 6:00 PM PST</p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@nextpathdevops.com">info@nextpathdevops.com</a><br><a href="mailto:support@nextpathdevops.com">support@nextpathdevops.com</a></p>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Business Hours</h3>
+                    <p>Monday - Friday: 9:00 AM - 6:00 PM<br>Saturday: 10:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                </div>
+            </div>
+
+            <!-- CONTACT FORM -->
+            <div class="form-container">
+                <h3 style="color: #93c5fd; margin-bottom: 25px;">Send us a Message</h3>
+                
+                <div class="form-success" id="formSuccess">
+                    ✓ Thank you! Your message has been sent successfully. We'll get back to you soon.
+                </div>
+
+                <form id="contactForm" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required placeholder="Your full name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="Course Inquiry">Course Inquiry</option>
+                                <option value="Service Inquiry">Service Inquiry</option>
+                                <option value="Mentorship">Mentorship Program</option>
+                                <option value="Corporate Training">Corporate Training</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" required placeholder="Tell us more about your inquiry..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 NextPath DevOps | Empowering Careers in Cloud & DevOps ☁️
+    </footer>
+
+    <script>
+        // Hamburger Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Set active link based on current page
+        function setActiveLink() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+        setActiveLink();
+
+        // Form Submission Handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const form = document.getElementById('contactForm');
+            const formSuccess = document.getElementById('formSuccess');
+            
+            // Get form data
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Simple validation
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Show success message
+            formSuccess.classList.add('show');
+            
+            // Reset form
+            form.reset();
+            
+            // Hide success message after 5 seconds
+            setTimeout(() => {
+                formSuccess.classList.remove('show');
+            }, 5000);
+            
+            // Log the data (In a real application, this would be sent to a server)
+            console.log({
+                name,
+                email,
+                phone,
+                subject,
+                message,
+                timestamp: new Date().toISOString()
+            });
+        }
+    </script>
+
+</body>
+</html>
